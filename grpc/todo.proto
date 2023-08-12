@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+service TodoService {
+    rpc ListTodos (EmptyRequest) returns (TodoList);
+    rpc GetTodo (TodoId) returns (Todo);
+    rpc AddTodo (NewTodo) returns (Todo);
+    rpc UpdateTodo (UpdateTodoRequest) returns (Todo);
+    rpc DeleteTodo (TodoId) returns (EmptyResponse);
+}
+
+message EmptyRequest {}
+
+message EmptyResponse {}
+
+message Todo {
+    int32 id = 1;
+    string task = 2;
+}
+
+message NewTodo {
+    string task = 1;
+}
+
+message UpdateTodoRequest {
+    int32 id = 1;
+    string task = 2;
+}
+
+message TodoId {
+    int32 id = 1;
+}
+
+message TodoList {
+    repeated Todo todos = 1;
+}
