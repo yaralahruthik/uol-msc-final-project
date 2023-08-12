@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="TodoService"
+   targetNamespace="http://www.example.org/TodoService/"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns="http://www.example.org/TodoService/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <!-- Define messages for each operation - Create, Read, Update, Delete -->
+   <message name="createTodoRequest">
+      <part name="todo" type="xsd:string"/>
+   </message>
+   <message name="createTodoResponse">
+      <part name="result" type="xsd:string"/>
+   </message>
+
+   <message name="readTodoRequest">
+      <part name="id" type="xsd:int"/>
+   </message>
+   <message name="readTodoResponse">
+      <part name="result" type="xsd:string"/>
+   </message>
+
+   <message name="updateTodoRequest">
+      <part name="id" type="xsd:int"/>
+      <part name="todo" type="xsd:string"/>
+   </message>
+   <message name="updateTodoResponse">
+      <part name="result" type="xsd:string"/>
+   </message>
+
+   <message name="deleteTodoRequest">
+      <part name="id" type="xsd:int"/>
+   </message>
+   <message name="deleteTodoResponse">
+      <part name="result" type="xsd:string"/>
+   </message>
+
+   <!-- Define portType with operations -->
+   <portType name="TodoPortType">
+      <operation name="createTodo">
+         <input message="tns:createTodoRequest"/>
+         <output message="tns:createTodoResponse"/>
+      </operation>
+      <operation name="readTodo">
+         <input message="tns:readTodoRequest"/>
+         <output message="tns:readTodoResponse"/>
+      </operation>
+      <operation name="updateTodo">
+         <input message="tns:updateTodoRequest"/>
+         <output message="tns:updateTodoResponse"/>
+      </operation>
+      <operation name="deleteTodo">
+         <input message="tns:deleteTodoRequest"/>
+         <output message="tns:deleteTodoResponse"/>
+      </operation>
+   </portType>
+
+   <!-- Define binding for the operations -->
+   <binding name="TodoBinding" type="tns:TodoPortType">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <operation name="createTodo">
+         <soap:operation soapAction="http://www.example.org/TodoService/createTodo"/>
+         <input>
+            <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+         </output>
+      </operation>
+
+      <!-- SOAP operation definition for readTodo -->
+<operation name="readTodo">
+   <soap:operation soapAction="http://www.example.org/TodoService/readTodo"/>
+   <input>
+      <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </input>
+   <output>
+      <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </output>
+</operation>
+
+<!-- SOAP operation definition for updateTodo -->
+<operation name="updateTodo">
+   <soap:operation soapAction="http://www.example.org/TodoService/updateTodo"/>
+   <input>
+      <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </input>
+   <output>
+      <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </output>
+</operation>
+
+<!-- SOAP operation definition for deleteTodo -->
+<operation name="deleteTodo">
+   <soap:operation soapAction="http://www.example.org/TodoService/deleteTodo"/>
+   <input>
+      <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </input>
+   <output>
+      <soap:body use="encoded" namespace="http://www.example.org/TodoService/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </output>
+</operation>
+
+   </binding>
+
+   <service name="TodoService">
+      <documentation>SOAP Service for managing ToDo tasks</documentation>
+      <port name="TodoPort" binding="tns:TodoBinding">
+         <soap:address location="http://localhost:3000/todo"/>
+      </port>
+   </service>
+
+</definitions>
