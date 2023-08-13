@@ -123,6 +123,15 @@ app.post('/todos', (req, res) => {
   res.status(201).json(newTodo);
 });
 
+app.get('/todos/:id', (req, res) => {
+  const todo = todos.find((todo) => todo.id === +req.params.id);
+  if (todo) {
+    res.json(todo);
+  } else {
+    res.status(404).json({ message: 'Todo not found' });
+  }
+});
+
 app.get('/todos', (req, res) => {
   const newTodos = todos.slice(-100);
   res.json({ todos: newTodos });
