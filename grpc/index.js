@@ -17,9 +17,9 @@ const todo_proto = grpc.loadPackageDefinition(packageDefinition);
 
 const server = new grpc.Server();
 
-let todos = [{ id: 1, task: 'Learn gRPC' }];
+let todos = [];
 
-let idCount = todos.length;
+let idCount = 0;
 
 server.addService(todo_proto.TodoService.service, {
   ListTodos: (_, callback) => {
@@ -38,10 +38,11 @@ server.addService(todo_proto.TodoService.service, {
   },
   AddTodo: (call, callback) => {
     let todo = {
-      id: ++idCount,
+      id,
       task: call.request.task,
     };
     todos.push(todo);
+    id++;
     callback(null, todo);
   },
   UpdateTodo: (call, callback) => {

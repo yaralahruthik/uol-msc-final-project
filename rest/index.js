@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 let todos = [];
+let id = 0;
 
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
@@ -12,12 +13,12 @@ const PORT = 3000;
 
 app.post('/todos', (req, res) => {
   const newTodo = {
-    id: Date.now().toString(), // simple way to generate unique IDs
+    id, // simple way to generate unique IDs
     title: req.body.title,
-    description: req.body.description,
   };
 
   todos.push(newTodo);
+  id++;
   res.status(201).json(newTodo);
 });
 

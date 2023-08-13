@@ -6,12 +6,14 @@ const wsdl = 'todo.wsdl';
 
 // An in-memory store for our Todo tasks
 let todoStore = [];
+let id = 0;
 
 const serviceObject = {
   TodoService: {
     TodoPort: {
       createTodo: function (args, callback) {
-        todoStore.push({ ...args, id: Date.now().toString() });
+        todoStore.push({ ...args, id });
+        id++;
         callback({
           result: 'Todo added successfully!',
         });

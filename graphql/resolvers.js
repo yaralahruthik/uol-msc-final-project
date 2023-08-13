@@ -1,7 +1,7 @@
 // resolvers.js
-let todos = [{ id: 1, task: 'Learn GraphQL' }];
+let todos = [];
 
-let idCount = todos.length;
+let idCount = 0;
 
 const resolvers = {
   Query: {
@@ -10,8 +10,9 @@ const resolvers = {
   },
   Mutation: {
     addTodo: (_, { task }) => {
-      const todo = { id: ++idCount, task };
+      const todo = { id, task };
       todos.push(todo);
+      id++;
       return todo;
     },
     updateTodo: (_, { id, task, completed }) => {
