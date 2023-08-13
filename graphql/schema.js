@@ -13,8 +13,6 @@ const typeDefs = gql`
 
   type Mutation {
     addTodo(task: String!): Todo
-    updateTodo(id: Int!, task: String): Todo
-    deleteTodo(id: Int!): Todo
   }
 `;
 
