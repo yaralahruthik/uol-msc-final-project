@@ -25,7 +25,7 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Insert One" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Read One" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -34,10 +34,9 @@
                 <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:todo=&quot;http://www.example.org/TodoService/&quot;&gt;&#xd;
    &lt;soapenv:Header/&gt;&#xd;
    &lt;soapenv:Body&gt;&#xd;
-      &lt;todo:createTodo&gt;&#xd;
-         &lt;todo:title&gt;Your Todo Title Here&lt;/todo:title&gt;&#xd;
-         &lt;todo:description&gt;Your Todo Description Here&lt;/todo:description&gt;&#xd;
-      &lt;/todo:createTodo&gt;&#xd;
+      &lt;todo:readTodo&gt;&#xd;
+         &lt;todo:id&gt;50&lt;/todo:id&gt;&#xd;
+      &lt;/todo:readTodo&gt;&#xd;
    &lt;/soapenv:Body&gt;&#xd;
 &lt;/soapenv:Envelope&gt;&#xd;
 </stringProp>
