@@ -40,7 +40,6 @@ server.addService(todo_proto.TodoService.service, {
     let todo = {
       id: ++idCount,
       task: call.request.task,
-      completed: false,
     };
     todos.push(todo);
     callback(null, todo);
@@ -49,7 +48,6 @@ server.addService(todo_proto.TodoService.service, {
     let existingTodo = todos.find((t) => t.id === call.request.id);
     if (existingTodo) {
       existingTodo.task = call.request.task;
-      existingTodo.completed = call.request.completed;
       callback(null, existingTodo);
     } else {
       callback({
