@@ -6,12 +6,15 @@ const resolvers = require('./resolvers');
 const app = express();
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.applyMiddleware({ app, path: '/graphql' });
+(async function startApolloServer() {
+  await server.start();
+  server.applyMiddleware({ app, path: '/graphql' });
 
-const PORT = 4000;
+  const PORT = 4000;
 
-app.listen({ port: PORT }, () => {
-  console.log(
-    `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
-  );
-});
+  app.listen({ port: PORT }, () => {
+    console.log(
+      `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
+    );
+  });
+})();
