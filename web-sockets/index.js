@@ -118,7 +118,6 @@ app.get('/', (req, res) => {
 wss.on('connection', (ws) => {
   console.log('Client connected');
 
-  // When a message is received from a client
   ws.on('message', (message) => {
     console.log(`Received message => ${message}`);
 

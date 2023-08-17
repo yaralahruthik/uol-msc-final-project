@@ -4,7 +4,6 @@ const fs = require('fs');
 
 const wsdl = 'todo.wsdl';
 
-// An in-memory store for our Todo tasks
 let todoStore = [
   { id: 1, task: 'Buy groceries' },
   { id: 2, task: 'Complete the report for work' },

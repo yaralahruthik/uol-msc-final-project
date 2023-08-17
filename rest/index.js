@@ -114,7 +114,7 @@ const PORT = 3000;
 
 app.post('/todos', (req, res) => {
   const newTodo = {
-    id, // simple way to generate unique IDs
+    id,
     title: req.body.title,
   };
 
